@@ -31,11 +31,13 @@ LOSE_REASONS = {
 
 
 @app.route("/")
+@app.route("/app.py")
 def index():
     return render_template("index.html")
 
 
 @app.route("/api/play-round", methods=["POST"])
+@app.route("/app.py/api/play-round", methods=["POST"])
 def play_round():
     data = request.get_json() or {}
     try:
