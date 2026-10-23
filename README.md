@@ -79,7 +79,7 @@ snake-water-gun/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/snake-water-gun.git
+git clone https://github.com/AnshikaBansal787/snake-water-gun.git
 cd snake-water-gun
 ```
 
