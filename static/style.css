@@ -123,3 +123,43 @@
   background-color: #fffbeb !important;
   box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.35), 0 10px 25px rgba(245, 158, 11, 0.3);
 }
+
+/* Mode Tab Buttons */
+.mode-tab-btn {
+  background-color: #f1f5f9;
+  color: #334155;
+  border-color: #cbd5e1;
+  border-bottom-width: 4px;
+  cursor: pointer;
+}
+
+.mode-tab-btn:hover {
+  background-color: #e2e8f0;
+}
+
+.mode-tab-btn.active-mode {
+  background: linear-gradient(to right, #f59e0b, #f97316) !important;
+  color: #ffffff !important;
+  border-color: #c2410c !important;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Locked Card State for Friend Mode */
+.fighter-box.locked-glow {
+  border-color: #8b5cf6 !important;
+  background-color: #f5f3ff !important;
+  box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.35), 0 10px 25px rgba(139, 92, 246, 0.3);
+  animation: float-subtle 2s ease-in-out infinite;
+}
+
+/* Active Turn Pulse on Cards */
+.turn-pulse-p1 {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.4) !important;
+}
+
+.turn-pulse-p2 {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 5px rgba(2, 132, 199, 0.4) !important;
+}

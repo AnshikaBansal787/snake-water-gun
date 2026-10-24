@@ -40,13 +40,16 @@ The core game logic, scoring, and round resolution are powered entirely by a **F
 
 ## ✨ Features
 
+- 🕹️ **Two Play Modes (Dashboard)**:
+  - 🤖 **1) Play with Computer**: Face off in solo mode against Robot Buddy.
+  - 👥 **2) Play with Friend**: 2-player pass & play! Player 1 locks in a secret weapon 🔒, then Player 2 picks for an epic showdown clash!
 - 🌈 **Kids-Friendly Visuals**: Bubbly typography (Google Fonts *Chewy* & *Fredoka*), floating clouds, twinkling stars, and bright pastel color schemes.
 - 🎮 **Tactile 3D Buttons**: Chunky, bouncy arcade buttons designed for easy interaction on both desktop and touch devices.
 - 🔊 **Built-in Web Audio Sound FX**: Zero-dependency browser-synthesized sounds (bubble pops, boings, fanfares) with a quick sound mute toggle.
 - ⚡ **Clash Suspense Animation**: Random emoji cycling before revealing moves to build excitement.
 - 🏆 **Rewarding Celebrations**: Multi-angle confetti blasts upon winning the trophy and an instant "Play Again" loop.
 - ⌨️ **Keyboard Support**: Full keyboard playability (`0`, `1`, `2` to choose, `Y` or `Enter` to restart).
-- 🧪 **Automated Test Coverage**: Comprehensive backend unit tests included.
+- 🧪 **Automated Test Coverage**: Comprehensive backend unit tests covering both solo and 2-player modes.
 
 ---
 
@@ -102,29 +105,41 @@ Open your web browser and go to:
 ## 🔌 API Reference
 
 ### `POST /api/play-round`
-Processes a round of Snake, Water, Gun.
+Processes a round of Snake, Water, Gun for either **Single Player** or **2-Player (Friend)** mode.
 
-#### Request Body:
+#### 1. Play with Computer Request:
 ```json
 {
+  "mode": "computer",
   "choice": 0,
   "previous_scores": [1, -1]
 }
 ```
 
-#### Response (Round in Progress):
+#### 2. Play with Friend Request:
 ```json
 {
-  "user_choice": { "id": 0, "name": "Snake", "icon": "🐍" },
-  "comp_choice": { "id": 1, "name": "Water", "icon": "💧" },
-  "round_status": "win",
+  "mode": "friend",
+  "p1_choice": 0,
+  "p2_choice": 1,
+  "previous_scores": [1, -1]
+}
+```
+
+#### Response (Friend Mode Example):
+```json
+{
+  "mode": "friend",
+  "p1_choice": { "id": 0, "name": "Snake", "icon": "🐍" },
+  "p2_choice": { "id": 1, "name": "Water", "icon": "💧" },
+  "round_status": "p1_win",
   "score_delta": 1,
-  "reason": "Snake drinks Water! You win this round.",
+  "reason": "Player 1's Snake beats Player 2's Water!",
   "current_round": 3,
   "match_over": true,
   "total_score": 1,
-  "match_result": "win",
-  "match_message": "🎉 Congratulations! You won the game!"
+  "match_result": "p1_win",
+  "match_message": "🎉 Player 1 Wins the Trophy! 🏆"
 }
 ```
 

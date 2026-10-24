@@ -66,6 +66,32 @@
   <!-- Main Arcade Container -->
   <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6 flex flex-col justify-center">
 
+    <!-- Game Mode Selection Dashboard -->
+    <div class="bg-white/95 rounded-3xl p-4 sm:p-5 mb-5 border-4 border-amber-300 shadow-md">
+      <div class="flex items-center justify-between mb-3 px-1">
+        <span class="text-xs font-black uppercase tracking-wider text-indigo-900 flex items-center gap-1.5">
+          <span>🕹️</span> SELECT GAME MODE:
+        </span>
+        <span id="current-mode-pill" class="text-xs font-extrabold px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border-2 border-emerald-300">
+          🤖 vs Computer Mode
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <!-- Option 1: Play with Computer -->
+        <button id="mode-btn-computer" class="mode-tab-btn active-mode flex items-center justify-center gap-2 py-3 px-4 rounded-2xl font-black text-sm sm:text-base border-b-4 transition-all">
+          <span class="text-xl">🤖</span>
+          <span>1) Play with Computer</span>
+        </button>
+
+        <!-- Option 2: Play with Friend -->
+        <button id="mode-btn-friend" class="mode-tab-btn flex items-center justify-center gap-2 py-3 px-4 rounded-2xl font-black text-sm sm:text-base border-b-4 transition-all">
+          <span class="text-xl">👥</span>
+          <span>2) Play with Friend</span>
+        </button>
+      </div>
+    </div>
+
     <!-- Top Scoreboard & Round Tracker (Toy Game Console Style) -->
     <div class="bg-white/95 rounded-3xl p-5 sm:p-6 mb-6 border-4 border-indigo-400 shadow-[0_10px_25px_rgba(79,70,229,0.18)] relative">
       <!-- Decorative Screws on Top Bar -->
@@ -108,7 +134,7 @@
 
         <!-- Score Meter -->
         <div class="text-center sm:text-right">
-          <span class="text-xs font-black uppercase tracking-wider text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Total Points</span>
+          <span id="score-meter-label" class="text-xs font-black uppercase tracking-wider text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Total Points</span>
           <div id="net-score-pill" class="text-3xl font-black text-indigo-700 mt-1">
             0 pts
           </div>
@@ -122,10 +148,10 @@
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
 
-        <!-- Player Side -->
+        <!-- Player 1 Side -->
         <div class="flex flex-col items-center text-center order-1">
-          <div class="px-4 py-1.5 rounded-full bg-emerald-500 text-white text-xs sm:text-sm font-black uppercase tracking-wider shadow-md mb-3 flex items-center gap-1.5">
-            <span>🧒</span> YOU (Player)
+          <div id="p1-badge-container" class="px-4 py-1.5 rounded-full bg-emerald-500 text-white text-xs sm:text-sm font-black uppercase tracking-wider shadow-md mb-3 flex items-center gap-1.5">
+            <span id="p1-badge-icon">🧒</span> <span id="p1-badge-label">YOU (Player)</span>
           </div>
           <div id="player-avatar" class="fighter-box w-32 h-32 sm:w-36 sm:h-36 rounded-3xl bg-emerald-100 border-4 border-emerald-400 flex items-center justify-center text-6xl shadow-inner transition-all duration-300">
             ❓
@@ -145,10 +171,10 @@
           </div>
         </div>
 
-        <!-- Computer Mascot Side -->
+        <!-- Opponent / Player 2 Side -->
         <div class="flex flex-col items-center text-center order-3">
-          <div class="px-4 py-1.5 rounded-full bg-sky-500 text-white text-xs sm:text-sm font-black uppercase tracking-wider shadow-md mb-3 flex items-center gap-1.5">
-            <span>🤖</span> ROBOT BUDDY
+          <div id="p2-badge-container" class="px-4 py-1.5 rounded-full bg-sky-500 text-white text-xs sm:text-sm font-black uppercase tracking-wider shadow-md mb-3 flex items-center gap-1.5">
+            <span id="p2-badge-icon">🤖</span> <span id="p2-badge-label">ROBOT BUDDY</span>
           </div>
           <div id="comp-avatar" class="fighter-box w-32 h-32 sm:w-36 sm:h-36 rounded-3xl bg-sky-100 border-4 border-sky-400 flex items-center justify-center text-6xl shadow-inner transition-all duration-300">
             ❓
@@ -163,7 +189,7 @@
     <!-- Kid-Friendly Weapon Buttons (3D Cartoon Buttons) -->
     <div id="actions-container">
       <div class="text-center mb-3">
-        <span class="inline-block bg-purple-600 text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md animate-pulse">
+        <span id="turn-instruction-banner" class="inline-block bg-purple-600 text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md animate-pulse">
           👇 Tap your weapon to attack! 👇
         </span>
       </div>
@@ -268,6 +294,11 @@
           <div>
             <strong class="text-amber-800 font-black">Gun (2):</strong> Shoots snake and wins! (+1 point)
           </div>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-indigo-50 border-2 border-indigo-200 text-xs font-bold text-indigo-900 space-y-1">
+          <div>🕹️ <strong>1) Play with Computer:</strong> You vs Robot Buddy in a 3-round battle!</div>
+          <div>👥 <strong>2) Play with Friend:</strong> Player 1 locks their secret pick 🔒, then Player 2 picks, and both reveal in an epic clash!</div>
         </div>
 
         <div class="p-3 rounded-2xl bg-purple-50 border-2 border-purple-200 text-xs font-bold text-purple-900">
